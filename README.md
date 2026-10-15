@@ -115,7 +115,9 @@ python examples/read_blocking_dialog.py       # spawns its own dialog to demonst
 
 The Windows tests spawn a standard `#32770` dialog through PowerShell — the same window
 class Adobe's `alert()` uses — so they exercise the real code paths without needing any
-third-party software installed.
+third-party software installed. That includes CI: the dialog tests pass on GitHub's
+`windows-latest` runners rather than skipping, and each run prints how many tests ran,
+skipped and failed, so a green check never hides a silent skip.
 
 Every claim in [`docs/traps.md`](docs/traps.md) has a test. If Windows or a library ever
 changes, the test fails before the documentation becomes a lie.

@@ -41,7 +41,10 @@ dependencies = []
 [project.optional-dependencies]
 # Window capture renders to a PIL image. The filesystem guards need nothing.
 capture = ["pillow>=9"]
-dev = ["pillow>=9", "pytest>=7", "ruff>=0.5"]
+# opencv is not a runtime dependency. It is here so the test that reproduces the
+# motivating bug - cv2.imwrite returning False on a non-ASCII path - actually runs in CI
+# instead of skipping.
+dev = ["pillow>=9", "pytest>=7", "ruff>=0.5", "opencv-python-headless>=4.8", "numpy>=1.24"]
 
 [project.urls]
 Homepage = "https://github.com/boyjustin76/failloud"
