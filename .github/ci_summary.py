@@ -40,6 +40,13 @@ def main(argv: list[str]) -> int:
         else:
             passed.append(name)
 
+    # A workflow notice shows on the run page and stays readable through the public API,
+    # so the counts can be checked without opening the logs.
+    counts = f"{len(passed)} passed, {len(skipped)} skipped, {len(failed)} failed"
+    print(f"::notice title=Test summary::{counts}", file=sys.stderr)
+    for name, reason in skipped:
+        print(f"::notice title=Skipped::{name} - {reason or 'no reason given'}", file=sys.stderr)
+
     print("### Test summary\n")
     print("| passed | skipped | failed |\n|---|---|---|")
     print(f"| {len(passed)} | {len(skipped)} | {len(failed)} |\n")
