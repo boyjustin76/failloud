@@ -21,7 +21,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev]"
-      - run: pytest -v
+      - run: pytest -v -rs --junitxml=report.xml
+      - name: Report what actually ran
+        # A green check does not say whether a test ran or skipped. The dialog tests
+        # need a desktop session, so the run page states the counts out loud.
+        if: always()
+        run: python .github/ci_summary.py report.xml >> $env:GITHUB_STEP_SUMMARY
 
   cross-platform:
     # failloud.fs must keep working with no dependencies and no Windows.

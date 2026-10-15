@@ -14,9 +14,11 @@
 넷 다 **예외를 내지 않았습니다.** `failloud` 는 이것들을 오류로 바꾸는 장치 모음입니다.
 
 ```bash
-pip install failloud          # 핵심 장치, 의존성 없음
-pip install failloud[capture] # 창 찍기 추가 (Pillow)
+pip install git+https://github.com/boyjustin76/failloud          # 핵심 장치, 의존성 없음
+pip install "failloud[capture] @ git+https://github.com/boyjustin76/failloud"  # + 창 찍기
 ```
+
+> 아직 PyPI 에 없습니다. 첫 태그 배포 전까지는 저장소에서 바로 설치합니다.
 
 ## 들은 말 말고, 쓴 것을 세어 본다
 

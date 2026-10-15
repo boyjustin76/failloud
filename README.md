@@ -19,9 +19,11 @@ Every bug in this library looked like success at the time:
 None of these raised. `failloud` is the set of guards that turn them into errors.
 
 ```bash
-pip install failloud          # core guards, no dependencies
-pip install failloud[capture] # adds window capture (Pillow)
+pip install git+https://github.com/boyjustin76/failloud          # core guards, no dependencies
+pip install "failloud[capture] @ git+https://github.com/boyjustin76/failloud"  # + window capture
 ```
+
+> Not on PyPI yet. Install from the repository until the first tagged release.
 
 ## Count what you wrote, don't trust what you were told
 
